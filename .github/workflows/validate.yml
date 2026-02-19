@@ -1,0 +1,36 @@
+name: Validate Model Config
+
+on:
+  push:
+    paths:
+      - 'models/**/*.json'
+  pull_request:
+    paths:
+      - 'models/**/*.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON configs
+        run: |
+          for f in models/*/config.json; do
+            echo "Validating $f..."
+            python3 -c "import json; json.load(open('$f'))"
+          done
+          echo "✅ All configs valid"
+
+      - name: Check required fields
+        run: |
+          python3 -c "
+          import json, sys
+          config = json.load(open('models/Prunnerai V.1.0/config.json'))
+          required = ['name']
+          missing = [f for f in required if f not in config]
+          if missing:
+              print(f'❌ Missing fields: {missing}')
+              sys.exit(1)
+          print('✅ All required fields present')
+          "
