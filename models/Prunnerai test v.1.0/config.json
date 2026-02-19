@@ -1,5 +1,5 @@
 {
-  "id": "0a0aa56e-b5af-42ed-9231-47f720d8b3c3",
+  "id": "2d820a2e-56a7-4556-be36-1952ee02046a",
   "name": "Prunnerai test v.1.0",
   "source_type": "local",
   "source_url": "scratch://Prunnerai test v.1.0",
@@ -8,14 +8,13 @@
     "web_search",
     "memory",
     "code_exec",
-    "agent_mgmt",
-    "blockchain",
-    "social",
-    "calendar",
+    "notifications",
     "file_io",
-    "notifications"
+    "agent_mgmt",
+    "social",
+    "blockchain"
   ],
-  "quantization_level": "int8",
+  "quantization_level": "q4_k_m",
   "weight_surgery": {
     "layer_scales": {},
     "pruned_layers": [],
@@ -36,7 +35,7 @@
   "build_config": {
     "temperature": 0.7,
     "max_tokens": 8192,
-    "context_window": 32768,
+    "context_window": 131072,
     "safety_filter": "moderate",
     "top_p": 0.9,
     "top_k": 50,
@@ -51,12 +50,12 @@
       "streaming": true
     },
     "scratch": {
-      "architecture": "transformer",
+      "architecture": "moe",
       "framework": "unsloth",
       "training_algorithms": [
         "lora"
       ],
-      "model_size": "70B",
+      "model_size": "3B",
       "use_base_weights": true
     },
     "code": {
@@ -72,24 +71,23 @@
       "web_search",
       "memory",
       "code_exec",
-      "agent_mgmt",
-      "blockchain",
-      "social",
-      "calendar",
+      "notifications",
       "file_io",
-      "notifications"
+      "agent_mgmt",
+      "social",
+      "blockchain"
     ],
     "liv_engine_tools": [],
     "build_tools": []
   },
   "scratch": {
-    "architecture": "transformer",
+    "architecture": "moe",
     "framework": "unsloth",
     "training_algorithms": [
       "lora"
     ],
-    "model_size": "70B",
+    "model_size": "3B",
     "use_base_weights": true
   },
-  "created_at": "2026-02-19T18:22:23.797591+00:00"
+  "created_at": "2026-02-19T18:57:54.322493+00:00"
 }

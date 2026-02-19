@@ -4,9 +4,9 @@
 
 ## Overview
 
-- **Architecture**: `transformer`
+- **Architecture**: `moe`
 - **Framework**: `unsloth`
-- **Target Size**: `70B`
+- **Target Size**: `3B`
 - **Training Algorithms**: `lora`
 - **Status**: `training_ready`
 
@@ -14,7 +14,7 @@
 
 ```
 ├── src/
-│   ├── model.py              # transformer architecture definition
+│   ├── model.py              # moe architecture definition
 │   ├── train.py              # Training script (unsloth)
 │   ├── dataset.py            # Dataset loading & preprocessing
 │   ├── evaluate.py           # Evaluation harness
