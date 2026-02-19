@@ -1,0 +1,13 @@
+{
+  "model_name": "Prunnerai test v.1.0",
+  "format": "safetensors",
+  "quantization": "fp16",
+  "total_size_bytes": null,
+  "files": [],
+  "source": {
+    "type": "scratch",
+    "url": "scratch://Prunnerai test v.1.0",
+    "revision": "main"
+  },
+  "exported_at": null
+}

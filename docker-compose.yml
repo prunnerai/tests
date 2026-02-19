@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  train:
+    build: .
+    container_name: Prunnerai test v.1.0-train
+    volumes:
+      - ./data:/workspace/data
+      - ./checkpoints:/workspace/checkpoints
+      - ./weights:/workspace/weights
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: python3 src/train.py
+
+  eval:
+    build: .
+    container_name: Prunnerai test v.1.0-eval
+    volumes:
+      - ./checkpoints:/workspace/checkpoints
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: python3 src/evaluate.py

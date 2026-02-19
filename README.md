@@ -1,52 +1,78 @@
-# Prunnerai V.1.0
+# Prunnerai test v.1.0
 
-> Forked and configured via [Priority Living Labs](https://prioritylivinglabs.lovable.app)
+> Built from scratch via [Priority Living Labs Model Forge](https://prioritylivinglabs.lovable.app)
 
 ## Overview
 
-- **Source**: [local](scratch://Prunnerai V.1.0)
-- **Quantization**: `q4_k_m`
-- **Status**: `forked`
+- **Architecture**: `transformer`
+- **Framework**: `unsloth`
+- **Target Size**: `70B`
+- **Training Algorithms**: `lora`
+- **Status**: `training_ready`
 
 ## Repository Structure
 
 ```
-├── models/Prunnerai V.1.0/
-│   ├── config.json          # Model DNA & parameters
-│   └── system_prompt.md     # System prompt
+├── src/
+│   ├── model.py              # transformer architecture definition
+│   ├── train.py              # Training script (unsloth)
+│   ├── dataset.py            # Dataset loading & preprocessing
+│   ├── evaluate.py           # Evaluation harness
+│   ├── export.py             # Weight export (SafeTensors / GGUF)
+│   └── config.py             # Hyperparameter loader
+├── models/Prunnerai test v.1.0/
+│   ├── config.json           # Model DNA & parameters
+│   └── system_prompt.md      # System prompt
 ├── inference/
-│   ├── run.py               # Inference script (vLLM / Ollama)
-│   └── requirements.txt     # Python dependencies
-├── figures/                  # Charts, diagrams, benchmarks
-├── weights/                  # Model weights (gitignored)
-├── LICENSE
-└── README.md
+│   ├── run.py                # Inference (vLLM / Ollama / Transformers)
+│   └── requirements.txt      # Inference dependencies
+├── data/                     # Training data (JSONL)
+├── checkpoints/              # Training checkpoints
+├── weights/                  # Exported weights (gitignored)
+├── Dockerfile                # GPU training container
+├── docker-compose.yml        # Local training orchestration
+├── Makefile                  # make train, make eval, make export
+└── requirements.txt          # Full training dependencies
 ```
 
 ## Quick Start
 
-### Using Ollama
+### 1. Prepare Data
 ```bash
-ollama run Prunnerai V.1.0
+# Add your training data
+cp your_data.jsonl data/train.jsonl
 ```
 
-### Using vLLM
+### 2. Train
 ```bash
-pip install -r inference/requirements.txt
-python inference/run.py --backend vllm
+# Local
+make setup
+make train
+
+# Docker (GPU)
+make docker-train
 ```
 
-### Using the Priority Living Platform
-This model can be deployed and tested directly from the [Model Registry](https://prioritylivinglabs.lovable.app).
+### 3. Evaluate
+```bash
+make eval
+```
+
+### 4. Export
+```bash
+make export          # SafeTensors
+make export-gguf     # GGUF for llama.cpp / Ollama
+```
+
+### 5. Inference
+```bash
+# After exporting weights
+python inference/run.py --backend ollama --prompt "Hello!"
+```
 
 ## Configuration
 
-The full model configuration is stored in `models/Prunnerai V.1.0/config.json`.
-
-| Parameter | Value |
-|-----------|-------|
-| Quantization | `q4_k_m` |
-| Tools | `web_search`, `memory`, `blockchain`, `code_exec`, `agent_mgmt` |
+See `models/Prunnerai test v.1.0/config.json` for full model DNA.
 
 ## License
 

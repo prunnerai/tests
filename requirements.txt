@@ -1,0 +1,21 @@
+# Core dependencies
+torch>=2.2.0
+safetensors>=0.4.0
+datasets>=2.16.0
+tokenizers>=0.15.0
+sentencepiece>=0.1.99
+
+# Unsloth (fast fine-tuning)
+unsloth[colab-new]>=2024.1
+trl>=0.8.0
+transformers>=4.40.0
+peft>=0.10.0
+bitsandbytes>=0.43.0
+
+# Inference
+vllm>=0.4.0
+requests>=2.31.0
+
+# Evaluation
+rouge-score>=0.1.2
+nltk>=3.8.1

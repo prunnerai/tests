@@ -1,34 +1,32 @@
-# Model weights (too large for git)
+# Model weights
 weights/*.bin
 weights/*.safetensors
 weights/*.pt
 weights/*.gguf
-weights/*.ggml
 !weights/.gitkeep
+
+# Checkpoints
+checkpoints/*.pt
+checkpoints/*.safetensors
+!checkpoints/.gitkeep
 
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
 *.egg-info/
 dist/
 build/
-.eggs/
 venv/
 .venv/
-env/
 
 # Environment
 .env
 .env.local
-.env.*.local
 
 # IDE
 .vscode/
 .idea/
 *.swp
-*.swo
-*~
 
 # OS
 .DS_Store
@@ -36,3 +34,4 @@ Thumbs.db
 
 # Logs
 *.log
+wandb/
